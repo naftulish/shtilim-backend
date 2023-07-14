@@ -74,7 +74,7 @@ router.delete("/users/:_id", async function (req: Request, response: Response, n
     }
 });
 
-router.post("/users", async function (req: Request, response: Response, next: NextFunction) {
+router.post("/auth/register", async function (req: Request, response: Response, next: NextFunction) {
     try {
         const user = new UsersModel(req.body);
         const newUser = await usersService.saveOneUser(user);
@@ -83,5 +83,6 @@ router.post("/users", async function (req: Request, response: Response, next: Ne
         next(error);
     }
 });
+
 
 export default router;

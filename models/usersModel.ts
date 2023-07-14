@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-enum Role {
+export enum Role {
     admin = "ADMIN",
     user = "USER"
 }
@@ -10,6 +10,7 @@ export interface IUsersModel extends mongoose.Document{
     firstName: string,
     lastName: string,
     email: string,
+    password: string,
     active: boolean,
     role: Role
 }
@@ -29,6 +30,10 @@ export const UsersSchema = new mongoose.Schema<IUsersModel>({
     email: {
         type: String,
         required: [true, "Missing mail"],
+        trim: true
+    },
+    password: {
+        type: String,
         trim: true
     },
     active: {
